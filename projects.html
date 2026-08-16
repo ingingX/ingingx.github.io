@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research Projects | Yingpeng MA</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <div class="masthead">
+    <div class="masthead__inner-wrap">
+      <div class="site-title">
+        <a href="index.html">Yingpeng (Elyjah) MA</a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <nav class="greedy-nav">
+        <a href="publications.html">Publications</a>
+        <a href="projects.html">Research projects</a>
+        <a href="cv.html">CV</a>
+        <button class="mode-toggle" aria-label="Toggle dark mode" title="黑白模式切换">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Page Layout -->
+  <div class="page-wrap">
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <div class="author-profile">
+        <img class="author-avatar"
+             src="assets/p1.png"
+             alt="Yingpeng Ma">
+
+        <h1>Yingpeng MA</h1>
+        <p class="author-role">AI Engineer & Researcher</p>
+
+        <ul class="author-links">
+          <li>
+            <i class="fa-solid fa-location-dot icon"></i>
+            <span>Stuttgart, Germany</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-brain icon"></i>
+            <span>AI & Intelligent Systems</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-envelope icon"></i>
+            <a href="mailto:yingpengma@gmail.com">Email</a>
+          </li>
+          <li>
+            <i class="fa-brands fa-linkedin icon"></i>
+            <a href="https://www.linkedin.com/in/yp-elyjah-ma/" target="_blank">LinkedIn</a>
+          </li>
+          <li>
+            <i class="fa-brands fa-github icon"></i>
+            <a href="https://github.com/ingingx" target="_blank">GitHub</a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="page-content">
+      <article class="page">
+        <h2>Research Projects</h2>
+
+        <div class="project">
+          <h3>GazeEval-VLM <span>2026</span></h3>
+          <p>
+            Independent project building a lightweight framework to test how human gaze,
+            used as an external cognitive signal, affects vision-language models on visual
+            and chart question answering. Model under test: Qwen2.5-VL-3B, benchmarked on
+            the VQA-MHUG and ChartGaze datasets.
+          </p>
+          <p>
+            Building GazeEval-VLM, a model-agnostic evaluation pipeline, and GazeVLM-Lite, a
+            lightweight inference method that feeds gaze in as visual evidence through
+            gaze cropping, gaze highlighting, background blurring, and multi-view
+            gaze-guided inputs, without touching model weights. Running a cross-domain
+            comparison across VQA and CQA subtasks to see which ones depend on local
+            visual evidence versus global context, and where gaze guidance actually helps
+            versus where it just adds noise. Also defining a gaze efficiency score to check
+            whether the accuracy gained from adding gaze signal is worth the extra
+            attention cost it introduces, rather than just assuming more signal is better.
+          </p>
+          <p>
+            Running the whole pipeline solo: gaze data preprocessing, the VLM inference
+            pipeline, implementing each gaze-guided intervention method and its
+            subdataset, the cross-domain comparative study, and the technical writeup.
+          </p>
+          <p>
+            Tech stack: PyTorch, Hugging Face Transformers, Accelerate, NumPy/Pandas,
+            scikit-learn, Matplotlib, Jupyter Notebook, Gradio for result demos.
+          </p>
+        </div>
+
+        <div class="project">
+          <h3>Dist-AI <span>2025</span></h3>
+          <p>
+            Independent open-source project simulating a distributed AI inference
+            architecture with Python and Docker: a coordinator service dispatching
+            requests to three worker containers, each wrapping a different
+            pretrained model, to explore load-based routing and fault tolerance in
+            a multi-model serving setup.
+          </p>
+          <p>
+            Routes each request by modality: text-only to a BERT worker
+            (prajjwal1/bert-tiny), image-only to a MobileNetV3-Small classifier, and
+            text+image to a CLIP worker (openai/clip-vit-base-patch32). Each worker
+            runs in its own container behind docker-compose, with a per-worker
+            health-check endpoint, retry logic, and structured error logging so one
+            worker crashing doesn't take the others down with it.
+          </p>
+          <p>
+            Wrote a smoke-test script for single-request checks and a batch-test
+            script that fires 21 concurrent requests to stress the routing logic,
+            plus simulated worker failures to verify the retry and logging paths
+            actually fire rather than assuming they work from reading the code.
+          </p>
+          <p>
+            Tech stack: Python, Docker, Docker Compose, Flask, REST APIs, PyTorch,
+            Hugging Face Transformers, torchvision, Requests.
+          </p>
+        </div>
+
+        <div class="project">
+          <h3>ValveSense-V2 <span>2024</span></h3>
+          <p>
+            Independent project: a CEEMDAN-SVR forecasting system for industrial
+            valve pressure sensor data, built to handle non-stationary signals that
+            standard time-series models struggle with.
+          </p>
+          <p>
+            Pipeline decomposes the raw signal with CEEMDAN into IMF (intrinsic
+            mode function) components, forecasts each with SVR using an RBF
+            kernel over sliding windows, then reconstructs them into a final
+            forecast. Split the code into separate decomposition, feature
+            engineering, forecasting, and evaluation layers so each stage can be
+            swapped or benchmarked on its own.
+          </p>
+          <p>
+            Wrapped the pipeline in a Gradio app, containerized it with Docker,
+            and built a benchmark harness to compare forecasting configurations.
+            Handled the full pipeline solo, from data preprocessing to deployment.
+            LSTM and Transformer forecasting are next on the roadmap.
+          </p>
+          <p>
+            Tech stack: Python, NumPy, Pandas, Matplotlib, scikit-learn, PyEMD,
+            Gradio, Docker.
+          </p>
+        </div>
+
+        <div class="project">
+          <h3>Analysing Human vs. Neural Attention in VQA <span>2023 – 2024</span></h3>
+          <p>
+            Master's thesis at the Universität Stuttgart, supervised by Yao Wang and
+            Susanne Hindennach.
+          </p>
+          <p>
+            Goal: extract attention maps from a Visual Question
+            Answering model, compare them against real human eye-gaze data, and see
+            whether the two actually line up or whether "neural attention" is more
+            of a metaphor than a mechanism.
+          </p>
+          <p>
+            Re-implemented MCAN (Modular Co-Attention Networks) from scratch and
+            matched published accuracy on VQAv2 within a point (67.16 vs. 67.17
+            overall for the small variant), using both Faster R-CNN region features
+            and ResNet-50 grid features as separate image encodings. Extended the
+            same setup to the GQA dataset to run a second, independent comparison,
+            again landing close to the published OpenVQA baseline.
+          </p>
+          <p>
+            Built the pipeline to pull raw 1D attention weights out of the model,
+            remap them into 2D heatmaps aligned to the original image, and apply
+            Gaussian smoothing over region-based attention so it's directly
+            comparable to the smoother human gaze heatmaps. Ran this against two
+            human-gaze-annotated benchmarks, VQA-MHUG (3,990 question-image pairs,
+            gaze averaged over 3 annotators per question) and AiR-D (1,454 pairs
+            built on GQA), and scored the machine-vs-human overlap with AUC,
+            Spearman's rank correlation, and Jensen-Shannon divergence.
+          </p>
+          <p>
+            Result: machine and human attention correlated significantly on both
+            datasets (Spearman's ρ up to 0.68), with Gaussianized region attention
+            consistently outperforming raw region or grid attention on AUC,
+            suggesting the correlation is genuine and not an artifact of how the
+            attention map is post-processed.
+          </p>
+          <p>
+            Tech stack: Python, PyTorch, torchvision, NumPy, SciPy, scikit-learn,
+            Git for experiment tracking, Jupyter Notebook for analysis and
+            visualization.
+          </p>
+        </div>
+
+        <div class="project">
+          <h3>LatentFit <span>2023</span></h3>
+          <p>
+            Independent project exploring metric learning on Fashion-MNIST: a CNN
+            embedding encoder trained with a triplet network to map fashion images
+            into a 128-dimensional semantic space, rather than framing it as
+            classification.
+          </p>
+          <p>
+            Built the triplet dataset construction, trained with triplet margin
+            loss, and evaluated the resulting embedding space with t-SNE and
+            cosine-similarity image retrieval. The t-SNE projection showed
+            semantically similar items clustering together (sneakers near sandals,
+            shirts overlapping pullovers), which the retrieval demo confirmed by
+            pulling visually and semantically related items for a given query
+            image.
+          </p>
+          <p>
+            Tech stack: Python, PyTorch, torchvision, NumPy, scikit-learn,
+            matplotlib.
+          </p>
+        </div>
+
+        <div class="project">
+          <h3>Visualization for Computational EEG Methods <span>2022</span></h3>
+          <p>
+            Seminar project during the master's program: built interactive Julia
+            Pluto notebooks to visualize and explain core EEG preprocessing
+            methods, ICA, baseline correction, and re-referencing, so the effect of
+            each step on the signal is visible rather than just described.
+          </p>
+          <p>
+            Tech stack: Julia, Pluto Notebook, DSP.jl, Plots.jl.
+          </p>
+        </div>
+
+        <div class="project">
+          <h3>Computational Modeling of Visual Saliency <span>2017 – 2019</span></h3>
+          <p>
+            Laboratory research project on computer vision and image saliency
+            detection, spanning sophomore to senior year and culminating in my
+            bachelor thesis under Prof. Dr. Bing Zeng. Built up computer vision
+            fundamentals, then investigated how traditional and learning-based
+            saliency models identify and prioritize informative regions in natural
+            images, and where each family of approaches breaks down on
+            interpretability or compute cost.
+          </p>
+          <p>
+            Proposed a saliency detection method built directly on image bitmaps
+            and implemented it as a lightweight ML model, then benchmarked it
+            against existing traditional and learning-based saliency models on
+            runtime, memory footprint, and mean absolute error. The bitmap-based
+            approach held up competitively against heavier models while using
+            substantially less compute, which mattered for deploying saliency
+            detection in resource-constrained settings.
+          </p>
+          <p>
+            Tech stack: MATLAB, MATLAB Image Processing Toolbox, Python, OpenCV,
+            NumPy, scikit-image, SVM/Random Forest classifiers, classical CV
+            techniques (edge detection, superpixel segmentation, frequency-domain
+            analysis).
+          </p>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © <span id="year"></span> Yingpeng MA. All rights reserved.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

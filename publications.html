@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Publications | Yingpeng MA</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <div class="masthead">
+    <div class="masthead__inner-wrap">
+      <div class="site-title">
+        <a href="index.html">Yingpeng (Elyjah) MA</a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <nav class="greedy-nav">
+        <a href="publications.html">Publications</a>
+        <a href="projects.html">Research projects</a>
+        <a href="cv.html">CV</a>
+        <button class="mode-toggle" aria-label="Toggle dark mode" title="黑白模式切换">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Page Layout -->
+  <div class="page-wrap">
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <div class="author-profile">
+        <img class="author-avatar"
+             src="assets/p1.png"
+             alt="Yingpeng Ma">
+
+        <h1>Yingpeng MA</h1>
+        <p class="author-role">AI Engineer & Researcher</p>
+
+        <ul class="author-links">
+          <li>
+            <i class="fa-solid fa-location-dot icon"></i>
+            <span>Stuttgart, Germany</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-brain icon"></i>
+            <span>AI & Intelligent Systems</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-envelope icon"></i>
+            <a href="mailto:yingpengma@gmail.com">Email</a>
+          </li>
+          <li>
+            <i class="fa-brands fa-linkedin icon"></i>
+            <a href="https://www.linkedin.com/in/yp-elyjah-ma/" target="_blank">LinkedIn</a>
+          </li>
+          <li>
+            <i class="fa-brands fa-github icon"></i>
+            <a href="https://github.com/ingingx" target="_blank">GitHub</a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="page-content">
+      <article class="page">
+        <h2>Publications</h2>
+
+        <div class="notice">
+          <p>
+            <strong>
+              GazeEval-VLM: Gaze-Guided Evaluation for Vision-Language Models
+            </strong>
+          </p>
+          <p>Yingpeng Ma. Manuscript in preparation, 2026.</p>
+          <p>
+            An independent research project building a lightweight,
+            model-agnostic evaluation framework for Vision-Language Models,
+            using human gaze as an external cognitive signal. Using
+            Qwen2.5-VL-3B as the base model and the VQA-MHUG and ChartGaze
+            datasets, the project studies how gaze-guided visual
+            interventions, such as gaze crops, gaze highlighting, blurred
+            backgrounds, and multi-view gaze-guided inputs, affect model
+            performance on visual and chart question answering tasks. It also
+            introduces GazeVLM-Lite, a lightweight inference method that uses
+            gaze as visual evidence to improve model performance, and a gaze
+            efficiency score to weigh performance gains against the added
+            attention cost.
+          </p>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © <span id="year"></span> Yingpeng MA. All rights reserved.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

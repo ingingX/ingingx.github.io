@@ -1,0 +1,14 @@
+<!--
+  profile-placeholder.svg
+  Temporary placeholder image.
+  Replace this file with your own profile photo later.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+  <rect width="100%" height="100%" fill="#e8e8e8"/>
+  <circle cx="200" cy="150" r="70" fill="#c7c7c7"/>
+  <path d="M60 370c15-95 70-145 140-145s125 50 140 145" fill="#c7c7c7"/>
+  <text x="200" y="385" text-anchor="middle"
+        font-family="Arial" font-size="18" fill="#777">
+    Replace with your photo
+  </text>
+</svg>
